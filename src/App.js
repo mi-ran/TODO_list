@@ -1,3 +1,18 @@
+import React, { Component } from 'react';
+import TodoListTemplate from './components/TodoListTemplate';
+
+class App extends Component {
+	render() {
+		return (
+			<TodoListTemplate>
+				템플릿 완성
+			</TodoListTemplate>
+		);
+	}
+}
+
+export default App;
+
 /*
 import React, { Component } from 'react';
 import logo from './logo.svg';
@@ -28,17 +43,3 @@ class App extends Component {
 
 export default App;
 */
-
-import React, { Component } from 'react';
-
-class App extends Component {
-	render() {
-		return (
-			<div>
-				App
-			</div>
-		);
-	}
-}
-
-export default App;
