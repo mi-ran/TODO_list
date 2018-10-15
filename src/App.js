@@ -33,9 +33,25 @@ class App extends Component {
 	}
 
 	handleKeyPress = (e) => {
-		if(e.key == 'Enter') {
+		if(e.key === 'Enter') {
 			this.handleCreate();
 		}
+	}
+
+	handleToggle = (id) => {
+		const { todos } = this.state;
+		const index = todos.findIndex(todo => todo.id === id);
+		const selected = todos[index];
+		const nextTodos = [...todos];
+
+		nextTodos[index] = {
+			...selected,
+			checked: !selected.checked
+		};
+
+		this.setState({
+			todos: nextTodos
+		});
 	}
 
 	render() {
@@ -43,7 +59,8 @@ class App extends Component {
 		const {
 			handleChange,
 			handleCreate,
-			handleKeyPress
+			handleKeyPress,
+			handleToggle
 		} = this;
 
 		return (
@@ -55,7 +72,7 @@ class App extends Component {
 					onCreate={handleCreate}
 				/>
 			)}>
-				<TodoItemList todos={todos}/>
+				<TodoItemList todos={todos} onToggle={handleToggle}/>
 			</TodoListTemplate>
 		);
 	}
